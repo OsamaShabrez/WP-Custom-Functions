@@ -8,3 +8,12 @@ Author: Osama Shabrez
 Author URI: http://osamashabrez.com
 */
 
+// Unlink urls in comment text
+remove_filter('comment_text', 'make_clickable', 9);
+ 
+//Remove the url field from your comment form
+function remove_comment_fields($fields) {
+    unset($fields['url']);
+    return $fields;
+}
+add_filter('comment_form_default_fields','remove_comment_fields');
